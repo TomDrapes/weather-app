@@ -1,0 +1,24 @@
+.App{
+  background-image: url('../img/sunny_flowers.jpeg');
+  background-size: cover;
+  height: 100vh;
+}  
+.navBar {
+  background-color: rgb(130, 151, 243);
+  height: auto;
+  font-size: 24px;
+  padding-left: 10px;
+}
+
+.weatherBox{
+  background-color: #eee;
+  opacity: 0.75;
+  width: 400px;
+  height: 400px;
+  margin: auto;
+  border-radius: 15px;
+  padding: 40px;
+  font-size: 36px;
+  text-align: center;
+  margin-top: 15vh;
+}
