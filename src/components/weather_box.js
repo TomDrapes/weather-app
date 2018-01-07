@@ -6,8 +6,7 @@ const WeatherBox = (props) => {
     return (
        <div className="weatherBox">
          <WeatherDetails 
-          temp={props.temp}
-          weather={props.weather}
+            current={props.current}
           />
        </div>
     )
