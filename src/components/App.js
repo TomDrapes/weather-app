@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import logo from '../img/logo.svg';
 import '../style/App.css';
-import './navbar.js';
+//import './navbar.js';
 import NavBar from './navbar.js';
 import WeatherBox from './weather_box';
 import ForecastList from './forecast_list';
+import WeatherMap from './weather_map';
+import SearchBar from './search_bar';
 import axios from 'axios';
 
 const API_KEY = '23253d7df8c8050b46985a4d8ec2e7dc';
@@ -52,10 +53,16 @@ class App extends Component {
     return (
       
       <div className="App">
-        <NavBar />  
+        <NavBar />
+        <div className="title">
+          <h2>Current weather and weekly forecasts for your city</h2>
+          <hr />
+          <SearchBar />
+        </div>
         <WeatherBox                     
           current={this.state.current}
         />
+        <WeatherMap />
         <ForecastList forecast={this.state.forecast} />
       </div>
     );

@@ -8,7 +8,7 @@ const ForecastListItem = (props) => {
             <div>
                 {props.forecast.dt_txt}
                 <div>
-                    <img src={icon_url} />
+                    <img src={icon_url} alt="weather icon"/>
                 </div>
                 <div>
                     {Math.round(props.forecast.main.temp - 273.15)}
