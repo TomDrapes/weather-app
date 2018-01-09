@@ -11,6 +11,8 @@ const WeatherDetails = (props) => {
       var date = new Date();
       var day = '';
       switch (date.getDay()) {
+        case 0: day = "Sunday";
+        break;
         case 1: day = "Monday";
         break;
         case 2: day = "Tuesday";
@@ -22,9 +24,7 @@ const WeatherDetails = (props) => {
         case 5: day = "Friday";
         break;
         case 6: day = "Saturday";
-        break;
-        case 7: day = "Sunday";
-        break;
+        break;        
         default: day = "Unknown";        
       }
     }
