@@ -126,3 +126,7 @@ hr {
   clear: both;
   font-size: 12px;
 }
+
+.search-container{
+  width: 100%;
+}

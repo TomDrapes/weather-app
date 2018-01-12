@@ -13,16 +13,16 @@ class SearchBar extends Component {
             <div className="row">
                 <div className="col-lg-4"></div>
                 <div className="col-lg-4">
-                    <div className="input-group input-group-lg">
+                    <div className="input-group search-container">
                         <input 
                             value={this.state.term}
                             className="form-control"
-                            onChange={event => this.onInputChange(event.target.value)} 
+                            onChange={event => this.onInputChange(event.target.value)}
                             placeholder="Enter city..." 
                         />
-                        <span className="input-group-btn">
+                        {/*<span className="input-group-btn">
                             <button type="submit" className="btn btn-secondary">Submit</button>
-                        </span>                
+        </span>       */}
                     </div>
                 </div>
                 <div className="col-lg-4"></div>
@@ -33,6 +33,7 @@ class SearchBar extends Component {
     onInputChange(term) {
         this.setState({term});
         this.props.onSearchTermChange(term);
+        
     }
 
 }

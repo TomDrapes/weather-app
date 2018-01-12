@@ -26,7 +26,7 @@ const ForecastListItem = (props) => {
     return (
         <li className="forecast-list-item">
             <div>
-                {day}                
+                <h5>{day}</h5>
                 <div>
                     <img src={icon_url} alt="weather icon"/>
                 </div>
