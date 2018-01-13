@@ -19,20 +19,23 @@ class SearchBar extends Component {
                             className="form-control"
                             onChange={event => this.onInputChange(event.target.value)}
                             placeholder="Enter city..." 
-                        />
-                        {/*<span className="input-group-btn">
-                            <button type="submit" className="btn btn-secondary">Submit</button>
-        </span>       */}
+                        />                        
+                    </div>
+                    
+                </div>
+                <div className="col-lg-4">
+                    <div className="tempButton">
+                        <div className="fahrenheit">&deg;F</div>
+                        <div className="celsius">&deg;C</div>                
                     </div>
                 </div>
-                <div className="col-lg-4"></div>
             </div>
         );
     }
 
     onInputChange(term) {
         this.setState({term});
-        this.props.onSearchTermChange(term);
+        this.props.onSearchTermChange(term, '', '');
         
     }
 
