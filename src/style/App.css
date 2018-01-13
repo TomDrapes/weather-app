@@ -119,6 +119,14 @@
   float: left;  
 }
 
+#map{
+  width: 650px;
+  height: 300px;
+  margin-top: 30px;
+  border: 1px solid black;
+  float: left; 
+}
+
 hr {
   width: 90%;
 }
