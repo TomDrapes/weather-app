@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../style/App.css';
-//import './navbar.js';
 import NavBar from './navbar.js';
 import WeatherBox from './weather_box';
 import ForecastList from './forecast_list';
@@ -33,7 +32,6 @@ class App extends Component {
   }
 
   getWeather(city, lat, lon){
-    console.log('lat: ', lat);
     if(lat === undefined){
 
       const url = `${CURRENT_WEATHER_URL}&q=${city}`;      
@@ -80,8 +78,7 @@ class App extends Component {
 
   componentDidMount = () => {
     navigator.geolocation.getCurrentPosition(
-       (position) => {
-          console.log("pos: ", position);
+       (position) => {          
           this.setState({
             latitude: position.coords.latitude,
             longitude: position.coords.longitude
