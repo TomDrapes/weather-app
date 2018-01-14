@@ -5,7 +5,7 @@ const NavBar = () => {
     
     return (
         <div className="navBar">
-            <img className="nav-logo" src={logo} width="70px" height="70px" />
+            <img className="nav-logo" src={logo} width="70px" height="70px" alt='' />
             <div className="nav-heading">WeatherFX</div>
             
         </div>

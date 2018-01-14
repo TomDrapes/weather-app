@@ -1,11 +1,47 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+
 
 class SearchBar extends Component {
     constructor(props){
         super(props);
 
-        this.state = { term: ''};
+        this.state = { 
+            term: '',
+            fahrenheit: {
+                color: "#ddd",
+                border: '2px solid #bbb'
+            },
+            celsius: {
+                color: 'rgb(97, 147, 212)',
+                border: '2px solid rgb(97, 147, 212)'
+            }
+        };
+    }
+
+    buttonClick(button){
+        if(button === 'f'){
+            this.setState({
+                fahrenheit: {
+                    color: 'rgb(97, 147, 212)',
+                    border: '2px solid rgb(97, 147, 212)'
+                },
+                celsius: {
+                    color: '#ddd',
+                    border: '2px solid #bbb'
+                }
+            })
+        }else if(button === 'c'){
+            this.setState({
+                fahrenheit: {
+                    color: "#ddd",
+                    border: '2px solid #bbb'
+                },
+                celsius: {
+                    color: 'rgb(97, 147, 212)',
+                    border: '2px solid rgb(97, 147, 212)'
+                }
+            })
+        }
     }
 
     render() {
@@ -25,8 +61,13 @@ class SearchBar extends Component {
                 </div>
                 <div className="col-lg-4">
                     <div className="tempButton">
-                        <div className="fahrenheit">&deg;F</div>
-                        <div className="celsius">&deg;C</div>                
+                        <div className="fahrenheit" 
+                        onClick={() => this.buttonClick('f')}
+                        style={{background: this.state.fahrenheit.color, borderBottom: this.state.fahrenheit.border}}
+                        >&deg;F</div>
+                        <div className="celsius" onClick={() => this.buttonClick('c')}
+                        style={{background: this.state.celsius.color, borderBottom: this.state.celsius.border}}
+                        >&deg;C</div>                
                     </div>
                 </div>
             </div>

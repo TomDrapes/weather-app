@@ -37,7 +37,7 @@ class App extends Component {
       const url = `${CURRENT_WEATHER_URL}&q=${city}`;      
       axios.get(url)
         .then((response) => {
-          console.log(response.data);        
+          //console.log(response.data);        
           this.setState({                 
             current: response.data
           });
@@ -46,7 +46,7 @@ class App extends Component {
       const url2 = `${FORECAST_URL}&q=${city}`;
       axios.get(url2)
       .then((response) => {
-        console.log(response.data);        
+        //console.log(response.data);        
         this.setState({          
           forecast: response.data.list
         });
@@ -57,7 +57,7 @@ class App extends Component {
       const url = `${COORDS_URL}&lat=${lat}&lon=${lon}`;
       axios.get(url)
         .then((response) => {
-          console.log(response.data);        
+          //console.log(response.data);        
           this.setState({                 
             current: response.data
           });
@@ -66,7 +66,7 @@ class App extends Component {
       const url2 = `${COORDS_5DAY_URL}&lat=${lat}&lon=${lon}`;
       axios.get(url2)
         .then((response) => {
-          console.log(response.data);        
+          //console.log(response.data);        
           this.setState({                 
             forecast: response.data.list
           });

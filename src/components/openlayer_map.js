@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
 
 import 'ol/ol.css';
-import ol from 'ol';
 import Map from 'ol/map';
 import View from 'ol/view';
 import Tile from 'ol/layer/tile';
 import OSM from 'ol/source/osm';
 import XYZ from 'ol/source/xyz';
-import proj from 'ol/proj';
-
 
 class OpenlayerMap extends Component {
   constructor(props) {
@@ -17,8 +14,21 @@ class OpenlayerMap extends Component {
     this.state = {
       coords: { lat: -27.470125, lng: 153.021072 },      
       map: {},
-      color: '#eee'
+      color: '#eee',
+      map_menu: {
+          t: 'rgb(238, 168, 103)',
+          w: '#eee',
+          c: '#eee',
+          prec: '#eee',
+          pres: '#eee'
+      }
     }    
+
+    this.wind = new XYZ({url: 'http://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'});
+    this.clouds = new XYZ({url: 'http://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'});
+    this.pressure = new XYZ({url: 'http://tile.openweathermap.org/map/pressure_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'});
+    this.temp = new XYZ({url: 'http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'});
+    this.precipitation = new XYZ({url: 'http://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'});
 
     this.changeLayer = this.changeLayer.bind(this);
   } 
@@ -30,7 +40,8 @@ class OpenlayerMap extends Component {
                 projection:'EPSG:4326',
                 center: [lon, lat],
                 zoom: 3,
-                minZoom: 2
+                minZoom: 2,
+                extent: [-180, -30, 180, 30]            
             }),
             layers: [
                 new Tile({
@@ -38,7 +49,7 @@ class OpenlayerMap extends Component {
                 }),
                 new Tile({
                   source: new XYZ({
-                    url: 'http://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'
+                    url: 'http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'
                   })
                 })
             ],
@@ -49,29 +60,26 @@ class OpenlayerMap extends Component {
   }
 
   changeLayer(variant){
-    var wind = new XYZ({url: 'http://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'});
-    var clouds = new XYZ({url: 'http://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'});
-    var pressure = new XYZ({url: 'http://tile.openweathermap.org/map/pressure_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'});
-    var temp = new XYZ({url: 'http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'});
-    var precipitation = new XYZ({url: 'http://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'});
-
     switch(variant){
-        case 'w': this.state.map.getLayers().getArray()[1].setSource(wind);
+        case 'w': this.state.map.getLayers().getArray()[1].setSource(this.wind);
+        this.setState({map_menu: {t:'#eee', w:'rgb(238, 168, 103)', c:'#eee', prec:'#eee', pres:'#eee'}})
         break;
-        case 'c': this.state.map.getLayers().getArray()[1].setSource(clouds);
+        case 'c': this.state.map.getLayers().getArray()[1].setSource(this.clouds);
+        this.setState({map_menu: {t:'#eee', w:'#eee', c:'rgb(238, 168, 103)', prec:'#eee', pres:'#eee'}})
         break;
-        case 'pres': this.state.map.getLayers().getArray()[1].setSource(pressure);
+        case 'pres': this.state.map.getLayers().getArray()[1].setSource(this.pressure);
+        this.setState({map_menu: {t:'#eee', w:'#eee', c:'#eee', prec:'#eee', pres:'rgb(238, 168, 103)'}})
         break;
-        case 't': this.state.map.getLayers().getArray()[1].setSource(temp);
+        case 't': this.state.map.getLayers().getArray()[1].setSource(this.temp);
+        this.setState({map_menu: {t:'rgb(238, 168, 103)', w:'#eee', c:'#eee', prec:'#eee', pres:'#eee'}})
         break;
-        case 'prec': this.state.map.getLayers().getArray()[1].setSource(precipitation);
+        case 'prec': this.state.map.getLayers().getArray()[1].setSource(this.precipitation);
+        this.setState({map_menu: {t:'#eee', w:'#eee', c:'#eee', prec:'rgb(238, 168, 103)', pres:'#eee'}})
+        break;
+        default: this.state.map.getLayers().getArray()[1].setSource(this.temp);
+        this.setState({map_menu: {t:'rgb(238, 168, 103)', w:'#eee', c:'#eee', prec:'#eee', pres:'#eee'}})
         break;
     }
-
-    /*this.state.map.getLayers().getArray()[1].setSource(wind);
-    this.setState({
-        color: 'orange'
-    }) */   
   }
 
   componentDidMount(map) {
@@ -86,12 +94,12 @@ class OpenlayerMap extends Component {
     return ( 
     <div>
         <div id="map"></div>
-        <div class="map-menu">
-            <div class="map-menu-item" onClick={() => this.changeLayer('t')} style={{background: this.state.color}}>Temperature</div>
-            <div class="map-menu-item" onClick={() => this.changeLayer('prec')} style={{background: this.state.color}}>Precipitation</div>
-            <div class="map-menu-item" onClick={() => this.changeLayer('pres')} style={{background: this.state.color}}>Pressure</div>
-            <div class="map-menu-item" onClick={() => this.changeLayer('c')} style={{background: this.state.color}}>Clouds</div>
-            <div class="map-menu-item" onClick={() => this.changeLayer('w')} style={{background: this.state.color}}>Wind</div>
+        <div className="map-menu">
+            <div className="map-menu-item" onClick={() => this.changeLayer('t')} style={{background: this.state.map_menu.t}}>Temperature</div>
+            <div className="map-menu-item" onClick={() => this.changeLayer('prec')} style={{background: this.state.map_menu.prec}}>Precipitation</div>
+            <div className="map-menu-item" onClick={() => this.changeLayer('pres')} style={{background: this.state.map_menu.pres}}>Pressure</div>
+            <div className="map-menu-item" onClick={() => this.changeLayer('c')} style={{background: this.state.map_menu.c}}>Clouds</div>
+            <div className="map-menu-item" onClick={() => this.changeLayer('w')} style={{background: this.state.map_menu.w}}>Wind</div>
         </div>
     </div> )
   }
