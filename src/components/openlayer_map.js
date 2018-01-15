@@ -6,6 +6,7 @@ import View from 'ol/view';
 import Tile from 'ol/layer/tile';
 import OSM from 'ol/source/osm';
 import XYZ from 'ol/source/xyz';
+import Zoom from 'ol/control/zoom';
 
 class OpenlayerMap extends Component {
   constructor(props) {
@@ -53,6 +54,9 @@ class OpenlayerMap extends Component {
                   })
                 })
             ],
+            controls: [
+              new Zoom()
+          ],
             target: 'map'
         })
       })
@@ -92,16 +96,16 @@ class OpenlayerMap extends Component {
 
   render() {        
     return ( 
-    <div>
-        <div id="map"></div>
-        <div className="map-menu">
-            <div className="map-menu-item" onClick={() => this.changeLayer('t')} style={{background: this.state.map_menu.t}}>Temperature</div>
-            <div className="map-menu-item" onClick={() => this.changeLayer('prec')} style={{background: this.state.map_menu.prec}}>Precipitation</div>
-            <div className="map-menu-item" onClick={() => this.changeLayer('pres')} style={{background: this.state.map_menu.pres}}>Pressure</div>
-            <div className="map-menu-item" onClick={() => this.changeLayer('c')} style={{background: this.state.map_menu.c}}>Clouds</div>
-            <div className="map-menu-item" onClick={() => this.changeLayer('w')} style={{background: this.state.map_menu.w}}>Wind</div>
-        </div>
-    </div> )
+    
+      <div id="map">
+        <ul className="map-menu">
+              <li className="map-menu-item" onClick={() => this.changeLayer('t')} style={{background: this.state.map_menu.t}}>Temperature</li>
+              <li className="map-menu-item" onClick={() => this.changeLayer('prec')} style={{background: this.state.map_menu.prec}}>Precipitation</li>
+              <li className="map-menu-item" onClick={() => this.changeLayer('pres')} style={{background: this.state.map_menu.pres}}>Pressure</li>
+              <li className="map-menu-item" onClick={() => this.changeLayer('c')} style={{background: this.state.map_menu.c}}>Clouds</li>
+              <li className="map-menu-item" onClick={() => this.changeLayer('w')} style={{background: this.state.map_menu.w}}>Wind</li>
+        </ul>
+      </div>);
   }
 }
 

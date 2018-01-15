@@ -32,7 +32,7 @@ export default class WeatherMap extends Component {
     
     
     return (
-      <div>                
+      <div className='map-box'>                
         <OpenlayerMap map={ this.state.coords } />
       </div>
     )

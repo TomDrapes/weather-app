@@ -6,6 +6,10 @@ const ForecastListItem = (props) => {
     var d = props.forecast.dt_txt.split(" ", 1);
     var date = new Date(d[0]);
     var day = '';
+    var temp = Math.round(props.forecast.main.temp - 273.15);
+    if(props.measurement === 'F'){
+        temp = Math.round(9/5*(props.forecast.main.temp - 273.15) + 32);
+    }
     switch (date.getDay()) {
         case 0: day = "Sunday";
         break;
@@ -31,7 +35,7 @@ const ForecastListItem = (props) => {
                     <img src={icon_url} alt="weather icon"/>
                 </div>
                 <div>
-                    {Math.round(props.forecast.main.temp - 273.15)}&deg;C
+                    {temp}&deg;{props.measurement}
                 </div>
             </div>
         </li>

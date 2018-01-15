@@ -25,9 +25,11 @@ class App extends Component {
       current: {},
       forecast: [],
       latitude: '-33.865143',
-      longitude: '151.209900'      
+      longitude: '151.209900',
+      weather_measurement: 'C'      
     };
- 
+    
+    this.setMeasurement = this.setMeasurement.bind(this);
     this.getWeather('Brisbane', this.state.latitude, this.state.longitude);
   }
 
@@ -71,9 +73,14 @@ class App extends Component {
             forecast: response.data.list
           });
       });
-    }
+    }    
+  }
 
-    
+  setMeasurement(measurement){
+    console.log(measurement);
+    this.setState({
+      weather_measurement: measurement
+    })
   }
 
   componentDidMount = () => {
@@ -98,13 +105,14 @@ class App extends Component {
         <div className="title">
           <h2>Current weather and next day forecasts for your city</h2>
           <hr />
-          <SearchBar onSearchTermChange={getWeather} />
+          <SearchBar onSearchTermChange={getWeather} onMeasurementChange={this.setMeasurement} />
         </div>
         <WeatherBox                     
-          current={this.state.current}
+          current={this.state.current} measurement={this.state.weather_measurement}
         />
         <WeatherMap data={this.state.current}/>
-        <ForecastList forecast={this.state.forecast} />
+        <ForecastList forecast={this.state.forecast} 
+          measurement={this.state.weather_measurement} />
         <Footer />
       </div>
     );

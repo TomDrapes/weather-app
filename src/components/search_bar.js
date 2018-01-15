@@ -7,6 +7,7 @@ class SearchBar extends Component {
 
         this.state = { 
             term: '',
+            weather_measurement: 'C',
             fahrenheit: {
                 color: "#ddd",
                 border: '2px solid #bbb'
@@ -19,8 +20,9 @@ class SearchBar extends Component {
     }
 
     buttonClick(button){
-        if(button === 'f'){
+        if(button === 'F'){
             this.setState({
+                weather_measurement: 'F',
                 fahrenheit: {
                     color: 'rgb(97, 147, 212)',
                     border: '2px solid rgb(97, 147, 212)'
@@ -30,8 +32,9 @@ class SearchBar extends Component {
                     border: '2px solid #bbb'
                 }
             })
-        }else if(button === 'c'){
+        }else if(button === 'C'){
             this.setState({
+                weather_measurement: 'C',
                 fahrenheit: {
                     color: "#ddd",
                     border: '2px solid #bbb'
@@ -42,13 +45,14 @@ class SearchBar extends Component {
                 }
             })
         }
+        this.props.onMeasurementChange(button);
     }
 
     render() {
         return (
             <div className="row">
-                <div className="col-lg-4"></div>
-                <div className="col-lg-4">
+                <div className="col-lg-4 col-md-4 col-sm-3 col-xs-3"></div>
+                <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6">
                     <div className="input-group search-container">
                         <input 
                             value={this.state.term}
@@ -59,13 +63,13 @@ class SearchBar extends Component {
                     </div>
                     
                 </div>
-                <div className="col-lg-4">
+                <div className="col-lg-4 col-md-4 col-sm-3 col-xs-3">
                     <div className="tempButton">
                         <div className="fahrenheit" 
-                        onClick={() => this.buttonClick('f')}
+                        onClick={() => this.buttonClick('F')}
                         style={{background: this.state.fahrenheit.color, borderBottom: this.state.fahrenheit.border}}
                         >&deg;F</div>
-                        <div className="celsius" onClick={() => this.buttonClick('c')}
+                        <div className="celsius" onClick={() => this.buttonClick('C')}
                         style={{background: this.state.celsius.color, borderBottom: this.state.celsius.border}}
                         >&deg;C</div>                
                     </div>

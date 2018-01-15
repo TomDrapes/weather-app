@@ -3,10 +3,18 @@ import React from 'react';
 const WeatherDetails = (props) => {    
     if(!props.current.weather){
       return <div>Loading...</div>
-    }else{                  
-      var tempC = Math.round(props.current.main.temp - 273.15);
+    }else{
+      var temp = Math.round(props.current.main.temp - 273.15);
       var tempMax = Math.round(props.current.main.temp_max -273.15);
       var tempMin = Math.round(props.current.main.temp_min -273.15);
+
+      if(props.measurement === 'F'){
+        temp = Math.round(9/5*(props.current.main.temp - 273.15) + 32);
+        tempMax = Math.round(9/5*(props.current.main.temp_max - 273.15) + 32);
+        tempMin = Math.round(9/5*(props.current.main.temp_min - 273.15) + 32);
+      }       
+      
+      
       var icon_url = `http://openweathermap.org/img/w/${props.current.weather[0].icon}.png`;
       var date = new Date();
       var day = '';
@@ -31,7 +39,7 @@ const WeatherDetails = (props) => {
     return (
        <div className="weatherDetails">
          <h4>Weather in {props.current.name}, {props.current.sys.country}</h4>
-         <h5>{day}: <img className="weatherIcon" src={icon_url} width="50px" height="50px" alt="weather icon"/> {tempC}&deg;C </h5>                          
+         <h5>{day}: <img className="weatherIcon" src={icon_url} width="50px" height="50px" alt="weather icon"/> {temp}&deg;{props.measurement} </h5>                          
          
          <table className="weather-table">
            <tbody>
@@ -49,11 +57,11 @@ const WeatherDetails = (props) => {
              </tr>
              <tr className="weather-item-detail">
                <td>Daily Maximum</td>
-               <td>{tempMax}&deg;C</td>
+               <td>{tempMax}&deg;{props.measurement}</td>
              </tr>
              <tr className="weather-item-detail">
                <td>Daily Minimum</td>
-               <td>{tempMin}&deg;C</td>
+               <td>{tempMin}&deg;{props.measurement}</td>
              </tr>
              <tr className="weather-item-detail">
                <td>Latitude</td>
