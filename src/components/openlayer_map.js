@@ -25,11 +25,11 @@ class OpenlayerMap extends Component {
       }
     }    
 
-    this.wind = new XYZ({url: 'http://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'});
-    this.clouds = new XYZ({url: 'http://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'});
-    this.pressure = new XYZ({url: 'http://tile.openweathermap.org/map/pressure_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'});
-    this.temp = new XYZ({url: 'http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'});
-    this.precipitation = new XYZ({url: 'http://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'});
+    this.wind = new XYZ({url: 'https://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'});
+    this.clouds = new XYZ({url: 'https://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'});
+    this.pressure = new XYZ({url: 'https://tile.openweathermap.org/map/pressure_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'});
+    this.temp = new XYZ({url: 'https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'});
+    this.precipitation = new XYZ({url: 'https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'});
 
     this.changeLayer = this.changeLayer.bind(this);
   } 
@@ -50,7 +50,7 @@ class OpenlayerMap extends Component {
                 }),
                 new Tile({
                   source: new XYZ({
-                    url: 'http://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'
+                    url: 'https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=23253d7df8c8050b46985a4d8ec2e7dc'
                   })
                 })
             ],

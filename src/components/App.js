@@ -10,11 +10,11 @@ import axios from 'axios';
 import _ from 'lodash';
 
 const API_KEY = '23253d7df8c8050b46985a4d8ec2e7dc';
-const CURRENT_WEATHER_URL = `http://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}`;
-const FORECAST_URL = `http://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}`;
+const CURRENT_WEATHER_URL = `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}`;
+const FORECAST_URL = `https://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}`;
 
-const COORDS_URL = `http://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}`;
-const COORDS_5DAY_URL = `http://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}`;
+const COORDS_URL = `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}`;
+const COORDS_5DAY_URL = `https://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}`;
 
 
 class App extends Component {
