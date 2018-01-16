@@ -15,7 +15,7 @@ const WeatherDetails = (props) => {
       }       
       
       
-      var icon_url = `http://openweathermap.org/img/w/${props.current.weather[0].icon}.png`;
+      var icon_url = `https://openweathermap.org/img/w/${props.current.weather[0].icon}.png`;
       var date = new Date();
       var day = '';
       switch (date.getDay()) {

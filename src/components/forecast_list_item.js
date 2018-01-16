@@ -2,7 +2,7 @@ import React from 'react';
 
 const ForecastListItem = (props) => {    
     //const imageURL = video.snippet.thumbnails.default.url;
-    const icon_url = `http://openweathermap.org/img/w/${props.forecast.weather[0].icon}.png`;
+    const icon_url = `https://openweathermap.org/img/w/${props.forecast.weather[0].icon}.png`;
     var d = props.forecast.dt_txt.split(" ", 1);
     var date = new Date(d[0]);
     var day = '';
