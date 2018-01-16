@@ -51,7 +51,7 @@ class SearchBar extends Component {
     render() {
         return (
             <div className="row">
-                <div className="col-lg-4 col-md-4 col-sm-3 col-xs-3"></div>
+                <div className="col-lg-4 col-md-4 col-sm-2 col-xs-1"></div>
                 <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6">
                     <div className="input-group search-container">
                         <input 
@@ -63,7 +63,7 @@ class SearchBar extends Component {
                     </div>
                     
                 </div>
-                <div className="col-lg-4 col-md-4 col-sm-3 col-xs-3">
+                <div className="col-lg-4 col-md-4 col-sm-4 col-xs-5">
                     <div className="tempButton">
                         <div className="fahrenheit" 
                         onClick={() => this.buttonClick('F')}

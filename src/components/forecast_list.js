@@ -14,9 +14,11 @@ const ForecastList = (props) => {
     });
 
     return (
-        <ul className="forecast-list">
-            {forecastItems}
-        </ul>
+        <div className="forecast-container">
+            <ul className="forecast-list">
+                {forecastItems}
+            </ul>
+        </div>
     )
 };
 

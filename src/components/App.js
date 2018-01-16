@@ -111,9 +111,12 @@ class App extends Component {
           current={this.state.current} measurement={this.state.weather_measurement}
         />
         <WeatherMap data={this.state.current}/>
+        
         <ForecastList forecast={this.state.forecast} 
           measurement={this.state.weather_measurement} />
+        
         <Footer />
+        <div class="clear" />
       </div>
     );
   }

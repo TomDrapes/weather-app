@@ -1,5 +1,5 @@
 .App{  
-  height: 100vh;  
+  height: auto;  
 }  
 
 .navBar {
@@ -65,7 +65,7 @@
   height: auto;
   float: left;
   margin: 0px 50px 0px 50px;
-  padding: 40px;
+  padding: 40px 40px 20px 40px;
   font-size: 16px; 
   clear: both;    
 }
@@ -83,11 +83,21 @@
   padding: 5px;
   text-align: left;
 }
-
-.forecast-list{
-  float: left;
+.forecast-container{
+  width: auto;
+  /*border: 1px solid blue;*/
+  margin-bottom: 20px;
   margin-top: 20px;
-  width: 50%;
+  clear: left; 
+  text-align: center;
+}
+.forecast-list{
+  width: auto;
+  margin: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px;
+  /*border: 1px solid pink;*/
 }
 
 .forecast-list-item{
@@ -95,24 +105,25 @@
   width: 130px;
   text-align: center;
   display: inline-block;
+  /*float: left;*/
+  /*overflow: hidden;*/
  
   margin: 5px;
   padding: 5px;
-  background-color: #f9f9f9;
-  border-radius: 5px;
-}
-.map-box{
-  /*border: 1px solid blue;
-  height: auto;*/
-  
+  /*background-color: #f9f9f9;
+  border-radius: 5px;*/
 }
 
+.map-box{
+  float: left;
+}
+
+
 #map{  
-  width: 50%;
-  height: 50vh;
+  width: 55vw;
+  height: 55vh;
   margin-top: 30px;
   border: 1px solid black;
-  float: left; 
   overflow: hidden;
   position: relative;     
 }
@@ -160,4 +171,46 @@ hr {
 
 .search-container{
   width: 100%;
+}
+
+@media (max-width: 900px){
+  .weatherBox{
+    margin: 0px 20px 0px 20px;
+    padding: 20px;
+  }
+
+  .map-menu{
+    width: auto;
+  }
+
+  h2{
+    font-size: 24px;
+  }
+  
+}
+
+@media (max-width: 600px){
+  .weatherBox{
+    width: 100%;
+    text-align: center;
+    margin: 0px;
+  }
+  .weather-table{
+    margin: auto;
+  }
+  .map-box{
+    clear: left;
+    float: none;
+  }
+
+  #map{
+    width: 90vw;
+    margin: auto;
+  }
+
+  h2{
+    font-size: 18px;
+  }
+
+  
 }
