@@ -16,7 +16,7 @@ export default class WeatherMap extends Component {
  
   componentWillReceiveProps(nextProps){
     
-    if(!nextProps.data){
+    if(!nextProps.data.coord.lat || nextProps.data.coord.lon || nextProps.data.weather[0].icon){
       console.log("waiting on nextProps");
     }else{
       //console.log("next", nextProps);
