@@ -116,7 +116,7 @@ class App extends Component {
           measurement={this.state.weather_measurement} />
         
         <Footer />
-        <div class="clear" />
+        <div className="clear" />
       </div>
     );
   }
