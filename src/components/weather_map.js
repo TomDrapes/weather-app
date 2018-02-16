@@ -15,11 +15,12 @@ export default class WeatherMap extends Component {
   } 
  
   componentWillReceiveProps(nextProps){
-    
-    if(!nextProps.data.coord.lat || !nextProps.data.coord.lon || !nextProps.data.weather[0].icon){
+    console.log('nextProps', nextProps);  
+    if(!nextProps || !nextProps.data || !nextProps.data.coord || !nextProps.data.weather[0] ||
+      !nextProps.data.coord.lat || !nextProps.data.coord.lon || !nextProps.data.weather[0].icon){
       console.log("waiting on nextProps");
     }else{
-      //console.log("next", nextProps);
+      console.log("next", nextProps);
       var updatedCoords = { lat: nextProps.data.coord.lat, lng: nextProps.data.coord.lon};    
       this.setState({coords: updatedCoords,
       icon: nextProps.data.weather[0].icon});
